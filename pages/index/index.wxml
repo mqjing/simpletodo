@@ -1,13 +1,29 @@
-<!--index.wxml-->
+<!-- 页面容器 -->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+	<!-- 头部新建事情 -->
+	<view class="header">
+		<input class="search" value="{{newthing}}" placeholder="随便写点东西..." placeholder-class="placehold" confirm-type="done" bindconfirm="addThingHandle" bindinput="inputHandle" confirm-hold="true" />
+		<image src="../images/add.png" bindtap="addThingHandle"></image>
+	</view>
+	<!-- 中部展示事情 -->
+	<view class="item-list">
+		<view 
+		wx:for="{{ todolist }}" 
+		wx:key="index" 
+		class="item" 
+		bindtap="taggleHandle" 
+		data-index="{{ index }}">
+			<icon 
+			type="{{ item.isChecked == true ? 'success' : 'circle' }}"
+			style="pointer-events: none" />
+			<text 
+			class="{{ item.isChecked }}"
+			style="pointer-events: none"
+			>{{ item.content }}</text>
+		</view>
+	</view>
+	<!-- 底部功能 -->
+	<view class="footer">
+		<text bindtap="clearAllHandle">clear all</text>
+	</view>
 </view>

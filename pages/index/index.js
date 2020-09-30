@@ -1,54 +1,52 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    newthing: '',
+    todolist: [
+    ],
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
+  // 完成事情处理函数
+  taggleHandle: function (e) {
+    // 当前被点的事情索引
+    var current = Number(e.target.dataset.index)
+    var todolist = this.data.todolist
+    // console.log(current)
+    if (todolist) {
+      todolist[current].isChecked = !this.data.todolist[current].isChecked
       this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
+        todolist: todolist
       })
     }
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+  // 输入事情,点击添加后处理函数
+  addThingHandle: function (e) {
+    var todolist = this.data.todolist
+    if (this.data.newthing) {
+      var newthing = {
+        content: this.data.newthing,
+        isChecked: false
+      }
+      todolist.push(newthing)
+      this.setData({
+        todolist: todolist,
+        newthing: '',
+      })
+    }
+  },
+  inputHandle: function (e) {
+    // 获取输入框中输入的内容
+    // console.log(e.detail.value)
+    var newthing = e.detail.value
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      newthing: newthing
+    })
+  },
+  clearAllHandle: function() {
+    this.setData({
+      todolist: '',
+      newthing: '',
     })
   }
 })
