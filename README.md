@@ -1,2 +1,2 @@
 # simpletodo
-一个超级简单的TODO List
+一个简单到令人发指的TODO List
