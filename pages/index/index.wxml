@@ -8,9 +8,9 @@
 	<!-- 中部展示事情 -->
 	<view class="item-list">
 		<view 
+		class="item" 
 		wx:for="{{ todolist }}" 
 		wx:key="index" 
-		class="item" 
 		bindtap="taggleHandle" 
 		data-index="{{ index }}">
 			<icon 

@@ -45,6 +45,7 @@ Page({
   },
   clearAllHandle: function() {
     var that = this
+    // 删除所有提示
     wx.showModal({
       title: '提示',
       content: '确定一定要删除吗宝贝？',

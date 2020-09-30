@@ -45,8 +45,9 @@ page {
 .item {
   display: flex;
   align-items: center;
-  height: 88rpx;
+  /* height: 88rpx; */
   margin-bottom: 9rpx;
+  overflow: hidden;
   border: 1rpx solid #bfbfbf;
   border-radius: 10rpx;
   box-shadow: 0 0 9rpx #bfbfbf;
@@ -56,6 +57,7 @@ page {
 }
 .item text {
   margin-left: 6rpx;
+  padding: 20rpx 0;
 }
 .true {
   color: #bfbfbf;
