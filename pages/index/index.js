@@ -44,9 +44,20 @@ Page({
     })
   },
   clearAllHandle: function() {
-    this.setData({
-      todolist: '',
-      newthing: '',
-    })
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '确定一定要删除吗宝贝？',
+      success (res) {
+        if (res.confirm) {
+          that.setData({
+            todolist: '',
+            newthing: '',
+          })
+        } else if (res.cancel) {
+          return
+        }
+      }
+    })    
   }
 })
