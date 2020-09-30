@@ -42,6 +42,19 @@ page {
   margin: 0 auto;
   margin-top: 33rpx;
 }
+.notodolist {
+  width: 88%;
+  height: 500rpx;
+  margin: 33rpx auto;
+  border-radius: 10rpx;
+  box-shadow: 0 0 9rpx #bfbfbf;
+}
+.no_text {
+  color: #bfbfbf;
+  font-size: 13px;
+  line-height: 500rpx;  
+  margin-left: 13rpx;
+}
 .item {
   display: flex;
   align-items: center;
