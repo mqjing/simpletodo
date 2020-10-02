@@ -4,8 +4,7 @@ const app = getApp()
 Page({
   data: {
     newthing: '',
-    todolist: [
-    ],
+    todolist: [],
   },
   // 完成事情处理函数
   taggleHandle: function (e) {
@@ -43,22 +42,33 @@ Page({
       newthing: newthing
     })
   },
-  clearAllHandle: function() {
+  clearAllHandle: function () {
     var that = this
-    // 删除所有提示
-    wx.showModal({
-      title: '提示',
-      content: '确定一定要删除吗宝贝？',
-      success (res) {
-        if (res.confirm) {
-          that.setData({
-            todolist: '',
-            newthing: '',
-          })
-        } else if (res.cancel) {
-          return
+    if (this.todolist) {
+      // 删除所有提示
+      wx.showModal({
+        title: '提示',
+        content: '确定一定要全部删除吗宝贝？',
+        success(res) {
+          if (res.confirm) {
+            that.setData({
+              todolist: '',
+              newthing: '',
+            })
+          } else if (res.cancel) {
+            return
+          }
         }
-      }
-    })    
+      })
+    } else {
+      // 删除所有提示
+      wx.showToast({
+        title: '还没有待办事项哦',
+        icon: 'none',
+        duration: 1300,
+        
+      })
+    }
+
   }
 })

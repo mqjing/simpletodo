@@ -7,7 +7,9 @@
 	</view>
 	<!-- 中部展示事情 -->
 	<view class="{{ todolist.length == 0 ? 'notodolist' : 'item-list'}}">
-		<text class="no_text" wx:if="{{ todolist.length == 0 }}">把要做的事情写下来，点击右上角‘+’创建一条TODO吧</text>
+		<view class="no_text" wx:if="{{ todolist.length == 0 }}">
+			<text>把要做的事情写下来，然后点击右上角‘+’创建一条TODO吧</text>
+		</view>
 		<view class="item" wx:for="{{ todolist }}" wx:key="index" bindtap="taggleHandle" data-index="{{ index }}">
 			<icon type="{{ item.isChecked == true ? 'success' : 'circle' }}" style="pointer-events: none" />
 			<text

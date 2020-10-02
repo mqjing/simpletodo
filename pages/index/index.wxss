@@ -48,12 +48,14 @@ page {
   margin: 33rpx auto;
   border-radius: 10rpx;
   box-shadow: 0 0 9rpx #bfbfbf;
+  padding-top: 1rpx;
 }
 .no_text {
-  color: #bfbfbf;
+  width: 69%;
+  height: 100rpx;
+  margin: 200rpx auto;
   font-size: 13px;
-  line-height: 500rpx;  
-  margin-left: 13rpx;
+  color: #bfbfbf;
 }
 .item {
   display: flex;
